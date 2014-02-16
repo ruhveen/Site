@@ -11,6 +11,7 @@ namespace Site.Controllers
 
         public List<FacebookViewModel> NewList { get; set; }
 
+
         public List<FacebookViewModel> DeletedMe { get; set; }
     }
 }

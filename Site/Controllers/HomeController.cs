@@ -1,0 +1,103 @@
+﻿using Facebook;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Site.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.IO;
+
+namespace Site.Controllers
+{
+    public class HomeController : Controller
+    {
+        public UserManager<ApplicationUser> UserManager { get; private set; }
+
+        public HomeController()
+        {
+            UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+        }
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public ActionResult SSETest()
+        {
+            return View();
+        }
+
+        public ActionResult NodeJSSocketIO()
+        {
+            return View();
+        }
+
+        public ActionResult ReadWriteCache()
+        {
+            return View();
+        }
+        public ActionResult Friends()
+        {
+            string currentUserId = User.Identity.GetUserId();
+            
+            var user = UserManager.FindById<ApplicationUser>(currentUserId);
+
+            
+            var fb = new FacebookClient(user.AccessToken);
+            dynamic myInfo = fb.Get("/me/friends");
+            var friendsList = new List<FacebookViewModel>();
+            foreach (dynamic friend in myInfo.data)
+            {
+                friendsList.Add(new FacebookViewModel() { Name = friend.name, ImageURL = @"https://graph.facebook.com/" + friend.id + "/picture?type=small" });
+                //Response.Write("Name: " + friend.name + "<br/>Facebook id: " + friend.id + "<br/><br/>");
+            }
+
+            var path = @"C:\Users\Guy\Documents\fbfriendsunicodePLAY.txt";
+            List<string> lines1 = new List<string>();
+            using (StreamReader sr = new StreamReader(@"C:\Users\Guy\Documents\fbfriendsunicodePLAY.txt", System.Text.Encoding.UTF8, true))
+            {
+                
+                while(!sr.EndOfStream)
+                {
+                    string currLine = sr.ReadLine();
+                    if(currLine=="Friends")
+                    {
+                        currLine = sr.ReadLine();
+                    }
+                    lines1.Add(currLine);
+                    currLine = sr.ReadLine();
+                    if(currLine!=string.Empty)
+                    {
+                        currLine = sr.ReadLine();
+                    }
+                }
+            }
+
+            var deletedMe = lines1.Where(k => !friendsList.Select(p => p.Name).Contains(k.Replace("\r",""))).Distinct();
+
+            //List<FacebookViewModel> friendsLists = new List<FacebookViewModel>() { new FacebookViewModel() { Name = "Bla" } };
+            FacebookLists lists = new FacebookLists() { OldList = friendsList, NewList = friendsList, DeletedMe = deletedMe.Select(k => new FacebookViewModel() { Name = k }).ToList() };
+            return View(lists);
+        }
+        private static List<string> GetLines(StreamReader sr)
+        {
+            return sr.ReadToEnd().Split('\n').Where(x => x != " ").ToList();
+        }
+    }
+}

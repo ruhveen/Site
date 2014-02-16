@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "SSETest";
+}
+
+<h2>SSETest</h2>
+
+<div id="text12">WELCOME!</div>
+<script>
+
+   
+    if (!!window.EventSource) {
+        var source = new EventSource('https://localhost:44300/api/chart/');
+        source.addEventListener('message', function (e) {
+            //var json = JSON.parse(e.data);
+            //viewModel.chatMessages.push(json);
+            //console.log(e.data);
+            $('#text12').append('<br />' + e.data + '<br />').show();
+        }, false);
+        source.addEventListener('open', function (e) {
+            console.log("open!");
+        }, false);
+        source.addEventListener('error', function (e) {
+            if (e.readyState == EventSource.CLOSED) {
+                console.log("error!");
+            }
+        }, false);
+    } else {
+        console.log('crap');
+    }
+</script>

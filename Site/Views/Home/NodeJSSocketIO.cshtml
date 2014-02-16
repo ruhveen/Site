@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "NodeJSSocketIO";
+}
+
+<h2>NodeJSSocketIO</h2>
+<div class="future-cop">
+    <h3 class="future">Halitney</h3>
+    <h1 class="cop">TWICE</h1>
+</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+    <script>
+        var socket = io.connect('http://localhost:801');
+
+        socket.on('news', function (data) {
+            console.log(data);
+            socket.emit('my other event', { my: 'data' });
+        });
+
+        function emit() {
+            //alert('hi');
+
+            socket.emit('YES', { hihi: 'newData12' });
+        }
+    </script>
+
+    <input type="button" title="EMIT NEW!" value="Emit:)" onclick="emit()" />

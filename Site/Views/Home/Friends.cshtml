@@ -8,11 +8,14 @@
 
 
 <table id="friendsTable" class="table table-striped table-bordered">
-    @foreach (var friend in Model.DeletedMe)
-    {
-        <tr>
-            <td>@(friend.Name)</td>
-        </tr>
+    @if (Model.DeletedMe!=null)
+    { 
+        foreach (var friend in Model.DeletedMe)
+        {
+            <tr>
+                <td>@(friend.Name)</td>
+            </tr>
+        }
     }
 
 </table>

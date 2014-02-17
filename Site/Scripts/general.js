@@ -2,7 +2,8 @@
 
 $(document).ready(function () {
 
-    var prefix = 'site/';
+    //var prefix = 'site/';
+    var prefix = '';
     $("#start").click(function () {
         var counter = parseInt($('#counter').val());
         for (index = 0; index < counter; index++) {

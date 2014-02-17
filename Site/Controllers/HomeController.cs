@@ -52,47 +52,61 @@ namespace Site.Controllers
         {
             return View();
         }
-        public ActionResult Friends()
+        public ActionResult Friends(bool privateFriends = true)
         {
             string currentUserId = User.Identity.GetUserId();
-            
-            var user = UserManager.FindById<ApplicationUser>(currentUserId);
+            FacebookLists lists = new FacebookLists();
 
-            
-            var fb = new FacebookClient(user.AccessToken);
-            dynamic myInfo = fb.Get("/me/friends");
-            var friendsList = new List<FacebookViewModel>();
-            foreach (dynamic friend in myInfo.data)
+            if (currentUserId != null)
             {
-                friendsList.Add(new FacebookViewModel() { Name = friend.name, ImageURL = @"https://graph.facebook.com/" + friend.id + "/picture?type=small" });
-                //Response.Write("Name: " + friend.name + "<br/>Facebook id: " + friend.id + "<br/><br/>");
-            }
 
-            var path = @"C:\Users\Guy\Documents\fbfriendsunicodePLAY.txt";
-            List<string> lines1 = new List<string>();
-            using (StreamReader sr = new StreamReader(@"C:\Users\Guy\Documents\fbfriendsunicodePLAY.txt", System.Text.Encoding.UTF8, true))
-            {
-                
-                while(!sr.EndOfStream)
+                var user = UserManager.FindById<ApplicationUser>(currentUserId);
+
+
+                var fb = new FacebookClient(user.AccessToken);
+                dynamic myInfo = fb.Get("/me/friends");
+                var friendsList = new List<FacebookViewModel>();
+                foreach (dynamic friend in myInfo.data)
                 {
-                    string currLine = sr.ReadLine();
-                    if(currLine=="Friends")
+                    friendsList.Add(new FacebookViewModel() { Name = friend.name, ImageURL = @"https://graph.facebook.com/" + friend.id + "/picture?type=small" });
+                    //Response.Write("Name: " + friend.name + "<br/>Facebook id: " + friend.id + "<br/><br/>");
+                }
+
+                
+                if (!privateFriends)
+                {
+
+
+                    List<string> lines1 = new List<string>();
+                    using (StreamReader sr = new StreamReader(@"C:\Users\Guy\Documents\fbfriendsunicodePLAY.txt", System.Text.Encoding.UTF8, true))
                     {
-                        currLine = sr.ReadLine();
+
+                        while (!sr.EndOfStream)
+                        {
+                            string currLine = sr.ReadLine();
+                            if (currLine == "Friends")
+                            {
+                                currLine = sr.ReadLine();
+                            }
+                            lines1.Add(currLine);
+                            currLine = sr.ReadLine();
+                            if (currLine != string.Empty)
+                            {
+                                currLine = sr.ReadLine();
+                            }
+                        }
                     }
-                    lines1.Add(currLine);
-                    currLine = sr.ReadLine();
-                    if(currLine!=string.Empty)
-                    {
-                        currLine = sr.ReadLine();
-                    }
+
+                    var deletedMe = lines1.Where(k => !friendsList.Select(p => p.Name).Contains(k.Replace("\r", ""))).Distinct();
+
+                    List<FacebookViewModel> friendsLists = new List<FacebookViewModel>() { new FacebookViewModel() { Name = "Bla" } };
+                    lists = new FacebookLists() { OldList = friendsList, NewList = friendsList, DeletedMe = deletedMe.Select(k => new FacebookViewModel() { Name = k }).ToList() };
+                }
+                else
+                {
+                    lists = new FacebookLists() { OldList = friendsList };
                 }
             }
-
-            var deletedMe = lines1.Where(k => !friendsList.Select(p => p.Name).Contains(k.Replace("\r",""))).Distinct();
-
-            //List<FacebookViewModel> friendsLists = new List<FacebookViewModel>() { new FacebookViewModel() { Name = "Bla" } };
-            FacebookLists lists = new FacebookLists() { OldList = friendsList, NewList = friendsList, DeletedMe = deletedMe.Select(k => new FacebookViewModel() { Name = k }).ToList() };
             return View(lists);
         }
         private static List<string> GetLines(StreamReader sr)

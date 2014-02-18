@@ -40,3 +40,79 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+#letterpress {
+	/*margin-top:200px;
+	text-align:center;*/
+}
+#letterpress h1 {
+	/*font-size:60px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #504f4f;
+	text-shadow: 0px 2px 1px #bbbaba;*/
+    /*background-color: #666666;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: rgba(255,255,255,0.5) 0px 3px 3px;*/
+
+
+    /*font-size: 72px;
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;*/
+
+    opacity: 0.8;
+color: rgb(114, 0, 0);
+   
+}
+.jumbotron h1 {
+font-size: 180px;
+}
+.jumbotron
+{
+    opacity: 0.8;
+    background-color: lightgray;
+}
+#letterpress h1:hover {
+	/*color: #666;
+	text-shadow: 0px 2px 1px #333;*/
+}
+
+@font-face {
+    font-family: "My Custom Font";
+    
+    
+    /*src: url("../fonts/Delicious-Roman.otf") format("truetype");*/
+    src: url("../fonts/Delicious-Roman.otf") format("truetype");
+}
+.customfont { 
+    font-family: "My Custom Font", Verdana, Tahoma;
+    font-size:20px;
+}
+
+@font-face {
+    font-family: "angel-tears";
+    src: url("../fonts/AngelTears.otf") format("truetype");
+}
+
+@font-face {
+    font-family: "candy";
+    src: url("../fonts/Candy.otf") format("truetype");
+}
+.angel-tears-font { 
+    font-family: "angel-tears", Verdana, Tahoma;
+}
+
+.col-md-4 h2
+{
+    font-size:60px;
+font-family: "candy", Verdana, Tahoma;
+}
+
+.col-md-4 p
+{
+    font-family: "My Custom Font", Verdana, Tahoma;
+    font-size:15px;
+}

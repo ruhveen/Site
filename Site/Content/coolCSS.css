@@ -8,7 +8,11 @@
 @import url(http://fonts.googleapis.com/css?family=Monoton);
 
 
-body { background: #000; color: #fff; position: relative;}
+body { background: linear-gradient(to bottom right, white , lightblue);  position: relative;}
+/*body {
+	background-image:url(../images/Untitled-1_03.gif);
+	background-repeat:repeat;
+}*/
 
 .chrome {
   position: relative;

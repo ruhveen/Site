@@ -116,3 +116,7 @@ font-family: "candy", Verdana, Tahoma;
     font-family: "My Custom Font", Verdana, Tahoma;
     font-size:15px;
 }
+html
+{
+    height:100%;
+}

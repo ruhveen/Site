@@ -1,12 +1,40 @@
-﻿@import url(http://fonts.googleapis.com/css?family=Mr+Dafoe);
-@import url(http://fonts.googleapis.com/css?family=Titillium+Web:900);
-@import url(http://fonts.googleapis.com/css?family=Righteous);
+﻿/*@import url(http://fonts.googleapis.com/css?family=Mr+Dafoe);*/
+/*@import url(http://fonts.googleapis.com/css?family=Titillium+Web:900);*/
+/*@import url(http://fonts.googleapis.com/css?family=Righteous);*/
 @import url(http://fonts.googleapis.com/css?family=Candal);
 
 @import url(http://fonts.googleapis.com/css?family=Permanent+Marker);
 
-@import url(http://fonts.googleapis.com/css?family=Monoton);
+/*@import url(http://fonts.googleapis.com/css?family=Monoton);*/
 
+
+@font-face {
+  font-family: 'Righteous';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Righteous'), local('Righteous-Regular'), url(http://themes.googleusercontent.com/static/fonts/righteous/v3/w5P-SI7QJQSDqB3GziL8XT8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Titillium WebBlack'), local('TitilliumWeb-Black'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr8vGCqQ_I4mewSLySUmNzHA.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Mr Dafoe';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Mr Dafoe Regular'), local('MrDafoe-Regular'), url(http://themes.googleusercontent.com/static/fonts/mrdafoe/v3/F1AgEicuA-Vh7KAhE4UhjfesZW2xOQ-xsNqO47m55DA.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Monoton';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Monoton'), local('Monoton-Regular'), url(http://themes.googleusercontent.com/static/fonts/monoton/v4/AKI-lyzyNHXByGHeOcds_w.woff) format('woff');
+}
 
 body { background: linear-gradient(to bottom right, white , lightblue);  position: relative;}
 /*body {

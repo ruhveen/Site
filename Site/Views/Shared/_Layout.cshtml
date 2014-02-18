@@ -23,13 +23,23 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Items", "Index", "Item")</li>
-                    <li>@Html.ActionLink("SSETest", "SSETest", "Home")</li>
-                    <li>@Html.ActionLink("Facebook Friends", "Friends", "Home")</li>
-                    <li>@Html.ActionLink("NodeJSSocketIO", "NodeJSSocketIO", "Home")</li>
-                    <li>@Html.ActionLink("ReadWriteCache", "ReadWriteCache", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Me", "About", "Home")</li>
+                    <li>@Html.ActionLink("Employment History", "About", "Home")</li>
+                    <li>@Html.ActionLink("Education", "About", "Home")</li>
+                    <li>@Html.ActionLink("Technical Summary", "About", "Home")</li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            See What I Can Do! <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li>@Html.ActionLink("Items", "Index", "Item")</li>
+                            <li>@Html.ActionLink("SSETest", "SSETest", "Home")</li>
+                            <li>@Html.ActionLink("Facebook Friends", "Friends", "Home")</li>
+                            <li>@Html.ActionLink("NodeJSSocketIO", "NodeJSSocketIO", "Home")</li>
+                            <li>@Html.ActionLink("ReadWriteCache", "ReadWriteCache", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        </ul>
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

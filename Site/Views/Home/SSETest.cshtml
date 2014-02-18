@@ -10,12 +10,15 @@
 
    
     if (!!window.EventSource) {
-        var source = new EventSource('https://localhost:44300/api/chart/');
+        var source = new EventSource('/api/chart/');
         source.addEventListener('message', function (e) {
             //var json = JSON.parse(e.data);
             //viewModel.chatMessages.push(json);
             //console.log(e.data);
-            $('#text12').append('<br />' + e.data + '<br />').show();
+            var newRowInHTML = $('<span><br />' + e.data + '<br /></span>');
+            newRowInHTML.hide().appendTo('#text12').fadeTo( "slow" , 1.0);//fadeIn(1000);
+            //$('#text12').append(newRowInHTML);
+            //newRowInHTML.fadeIn('slow');
         }, false);
         source.addEventListener('open', function (e) {
             console.log("open!");

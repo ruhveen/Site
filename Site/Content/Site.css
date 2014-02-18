@@ -1,12 +1,18 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    
+    color:green;
     
 }
-body, h2, h3, h1
+body, h2, h3, h1, h4
 {
     font-family: "My Custom Font", Verdana, Tahoma;
+}
+
+#text12
+{
+    font-family: "My Custom Font", Verdana, Tahoma;
+
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -114,7 +120,7 @@ font-size: 180px;
 .col-md-4 h2
 {
     font-size:60px;
-font-family: "candy", Verdana, Tahoma;
+    font-family: "candy", Verdana, Tahoma;
 }
 
 .col-md-4 p
@@ -125,4 +131,16 @@ font-family: "candy", Verdana, Tahoma;
 html
 {
     height:100%;
+}
+
+.cool-sub-headline
+{
+    font-size:45px;
+    font-family: "candy", Verdana, Tahoma;
+}
+.footer-wrapper
+{
+    position: fixed;
+    bottom:0px;
+    width:100%;
 }

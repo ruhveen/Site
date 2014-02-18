@@ -78,8 +78,9 @@ font-size: 180px;
 }
 .jumbotron
 {
-    opacity: 0.8;
-    background-color: lightgray;
+    background: linear-gradient(to bottom left, white , rgb(199, 219, 255));
+    border: 1px solid;
+    border-color: white;
 }
 #letterpress h1:hover {
 	/*color: #666;

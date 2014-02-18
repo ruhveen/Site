@@ -15,7 +15,7 @@
     <AssemblyName>Site</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort>44300</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -223,6 +223,17 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="fonts\Delicious-Bold.otf" />
+    <Content Include="fonts\Delicious-BoldItalic.otf" />
+    <Content Include="fonts\Delicious-Heavy.otf" />
+    <Content Include="fonts\Delicious-Italic.otf" />
+    <Content Include="fonts\Delicious-Roman.otf" />
+    <Content Include="fonts\Delicious-SmallCaps.otf" />
+    <Content Include="fonts\Candy.otf" />
+    <Content Include="fonts\BillionStars_PersonalUse.ttf" />
+    <Content Include="fonts\AngelTears.otf" />
+    <None Include="Properties\PublishProfiles\DebugProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\general.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -308,7 +319,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>13897</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/Site</IISUrl>
+          <IISUrl>http://localhost:13897/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

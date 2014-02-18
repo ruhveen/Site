@@ -1,6 +1,12 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    
+    
+}
+body, h2, h3, h1
+{
+    font-family: "My Custom Font", Verdana, Tahoma;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -82,7 +88,6 @@ font-size: 180px;
 
 @font-face {
     font-family: "My Custom Font";
-    
     
     /*src: url("../fonts/Delicious-Roman.otf") format("truetype");*/
     src: url("../fonts/Delicious-Roman.otf") format("truetype");

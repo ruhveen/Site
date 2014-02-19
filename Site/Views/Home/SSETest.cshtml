@@ -3,33 +3,66 @@
     ViewBag.Title = "SSETest";
 }
 
-<h2>SSE Test</h2>
 
-<div id="text12">Welcome! - This is an implementation of HTML5 Server Sent Events.</div>
-<br />
-<script>
 
-   
-    if (!!window.EventSource) {
-        var source = new EventSource('/api/chart/');
-        source.addEventListener('message', function (e) {
-            //var json = JSON.parse(e.data);
-            //viewModel.chatMessages.push(json);
-            //console.log(e.data);
-            var newRowInHTML = $('<span><br />' + e.data + '<br /></span>');
-            newRowInHTML.hide().appendTo('#text12').fadeTo( "slow" , 1.0);//fadeIn(1000);
-            //$('#text12').append(newRowInHTML);
-            //newRowInHTML.fadeIn('slow');
-        }, false);
-        source.addEventListener('open', function (e) {
-            console.log("open!");
-        }, false);
-        source.addEventListener('error', function (e) {
-            if (e.readyState == EventSource.CLOSED) {
-                console.log("error!");
-            }
-        }, false);
-    } else {
-        console.log('crap');
-    }
-</script>
+<div class="jumbotron">
+    <h2>SSE Test</h2>
+    <h5>Welcome! - This is an implementation of HTML5 Server Sent Events.</h5>
+    <div id="text12">
+        
+    </div>
+</div>
+
+    <br />
+    <script>
+
+        var text = "\nThis is an example paragraph, \n" +
+                    "Just to give you a taste of the brand-new  \n" +
+                    "your-friendly-neighborhood-html5 feature  \n" +
+                    "Server side events \n" +
+                    "Very cool \n" +
+                    "The sending of Each line of this paragraph \n" +
+                    "is initiated from server. \n " +
+                    "Sounds great right? \n" +
+                    "Well.. \n" +
+                    "Just not supported by IE :( \n" +
+                    "but when one comes to think of it.. \n" +
+                    "What is supported by IE? :) \n" +
+                    "\n\n";
+
+        var millisecondsBetweenRows = 2500;
+
+
+        if (!!window.EventSource) {
+            var source = new EventSource('/api/chart/?text=' + encodeURIComponent(text) + '&milliseconds=' + millisecondsBetweenRows);
+            source.addEventListener('message', function (e) {
+
+                var currentdate = new Date();
+                var datetime = "Last Sync: " + currentdate.getDate() + "/"
+                                + (currentdate.getMonth() + 1) + "/"
+                                + currentdate.getFullYear() + " "
+                                + currentdate.getHours() + ":"
+                                + currentdate.getMinutes() + ":"
+                                + currentdate.getSeconds();
+
+
+                //var json = JSON.parse(e.data);
+                //viewModel.chatMessages.push(json);
+                console.log(datetime + " " + e.data);
+                var newRowInHTML = $('<span>' + e.data + '</span>');
+                newRowInHTML.hide().appendTo('#text12').fadeTo(millisecondsBetweenRows, 1.0);//fadeIn(1000);
+                //$('#text12').append(newRowInHTML);
+                //newRowInHTML.fadeIn('slow');
+            }, false);
+            source.addEventListener('open', function (e) {
+                console.log("open!");
+            }, false);
+            source.addEventListener('error', function (e) {
+                if (e.readyState == EventSource.CLOSED) {
+                    console.log("error!");
+                }
+            }, false);
+        } else {
+            console.log('crap');
+        }
+    </script>

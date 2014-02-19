@@ -52,6 +52,10 @@ namespace Site.Controllers
         {
             return View();
         }
+        public ActionResult UnderConstruction()
+        {
+            return View();
+        }
         public ActionResult Friends(bool privateFriends = true)
         {
             string currentUserId = User.Identity.GetUserId();

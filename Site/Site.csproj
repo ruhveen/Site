@@ -186,6 +186,7 @@
     </Compile>
     <Compile Include="Helpers\IGetter.cs" />
     <Compile Include="Helpers\MyCache.cs" />
+    <Compile Include="Helpers\MyTextHelper.cs" />
     <Compile Include="Migrations\201402041029314_InitialCreate.cs" />
     <Compile Include="Migrations\201402041029314_InitialCreate.Designer.cs">
       <DependentUpon>201402041029314_InitialCreate.cs</DependentUpon>
@@ -281,6 +282,7 @@
     <Content Include="Views\Home\Friends.cshtml" />
     <Content Include="Views\Home\NodeJSSocketIO.cshtml" />
     <Content Include="Views\Home\ReadWriteCache.cshtml" />
+    <Content Include="Views\Home\UnderConstruction.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201402041029314_InitialCreate.resx">

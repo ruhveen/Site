@@ -283,6 +283,7 @@
     <Content Include="Views\Home\NodeJSSocketIO.cshtml" />
     <Content Include="Views\Home\ReadWriteCache.cshtml" />
     <Content Include="Views\Home\UnderConstruction.cshtml" />
+    <Content Include="Views\Home\EmploymentHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201402041029314_InitialCreate.resx">

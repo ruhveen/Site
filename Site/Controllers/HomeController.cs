@@ -56,6 +56,11 @@ namespace Site.Controllers
         {
             return View();
         }
+
+        public ActionResult EmploymentHistory()
+        {
+            return View();
+        }
         public ActionResult Friends(bool privateFriends = true)
         {
             string currentUserId = User.Identity.GetUserId();

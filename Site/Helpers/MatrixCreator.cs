@@ -27,6 +27,68 @@ namespace Site.Helpers
             }
         }
 
+        static int YTILES = 8;
+        static int XTILES = 8;
+        public static bool solveMaze(int[][] resss, int xPos, int yPos, bool[,] alreadySearched, int[][] helper)
+     {
+
+
+         bool correctPath = false;
+
+         //should the computer check this tile
+         bool shouldCheck = true;
+
+         //Check for out of boundaries
+         if (xPos >= XTILES || xPos < 0 || yPos >= YTILES || yPos < 0)
+             shouldCheck = false;
+         else
+         {
+
+             //Check if at finish, not (0,0 and colored light blue)
+             if (xPos == (XTILES-1) && yPos ==  (YTILES-1))
+                    {
+                        correctPath = true;
+                        shouldCheck = false;
+                    }
+                    //Check for a wall
+             if (resss[xPos][yPos] == 1)
+                        shouldCheck = false;
+                    //Check if previously searched
+                    if (alreadySearched[xPos, yPos])
+                        shouldCheck = false;
+                }
+                //Search the Tile
+                if (shouldCheck)
+                {
+                    //mark tile as searched
+                    alreadySearched[xPos, yPos] = true;
+                    //Check right tile
+                    correctPath = correctPath || solveMaze(resss,xPos + 1, yPos, alreadySearched,helper);
+                    //Check down tile
+                    correctPath = correctPath || solveMaze(resss, xPos, yPos + 1, alreadySearched, helper);
+                    //check left tile
+                    correctPath = correctPath || solveMaze(resss, xPos - 1, yPos, alreadySearched, helper);
+                    //check up tile
+                    correctPath = correctPath || solveMaze(resss, xPos, yPos - 1, alreadySearched, helper);
+
+                    //Check right tile
+                    correctPath = correctPath || solveMaze(resss, xPos + 1, yPos + 1, alreadySearched, helper);
+                    //Check down tile
+                    correctPath = correctPath || solveMaze(resss, xPos - 1, yPos - 1, alreadySearched, helper);
+                    //check left tile
+                    correctPath = correctPath || solveMaze(resss, xPos - 1, yPos + 1, alreadySearched, helper);
+                    //check up tile
+                    correctPath = correctPath || solveMaze(resss, xPos + 1, yPos - 1, alreadySearched, helper);
+                }
+
+                //make correct path gray
+                if (correctPath)
+                    helper[xPos][yPos] = 1;
+                return correctPath;
+            }
+    
+
+
         internal static int[][] Solve(int[][] resss)
         {
             int[][] helper = new int[resss.Length][];

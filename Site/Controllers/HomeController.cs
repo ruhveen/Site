@@ -63,10 +63,10 @@ namespace Site.Controllers
         {
             return View();
         }
-        //public ActionResult Matrix()
-        //{
-        //    return View(MatrixCreator.New);
-        //}
+        public ActionResult Matrix()
+        {
+            return View(MatrixCreator.New);
+        }
         public string SolveMatrix()
         {
             var str = Request.Form["res"];
@@ -74,8 +74,16 @@ namespace Site.Controllers
             JavaScriptSerializer js = new JavaScriptSerializer();
             int[][] resss = js.Deserialize<int[][]>(str);
 
+            int[][] helper = new int[resss.Length][];
 
-            return js.Serialize(MatrixCreator.Solve(resss)) ;
+            for (int row = 0; row < helper.Length; row++)
+            {
+                helper[row] = new int[helper.Length];
+            }
+
+            helper[0][0] = 1;
+            MatrixCreator.solveMaze(resss,0,0,new bool[8,8],helper);
+            return js.Serialize(helper);
         }
         public ActionResult Friends(bool privateFriends = false)
         {

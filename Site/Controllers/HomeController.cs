@@ -65,7 +65,15 @@ namespace Site.Controllers
         }
         public ActionResult Matrix()
         {
-            return View(MatrixCreator.New);
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            return View("~/Views/Home/Matrix.cshtml","",js.Serialize(MatrixCreator.New));
+            //return View("~/Views/Home/Matrix.cshtml", 4);
+        
+        }
+        public string NewMatrix()
+        {
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            return js.Serialize(MatrixCreator.New);
         }
         public string SolveMatrix()
         {

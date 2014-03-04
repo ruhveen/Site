@@ -2,10 +2,14 @@
 @{
     ViewBag.Title = "Matrix";
 }
-@model int[][]
+
+@model string
 <h2>Matrix</h2>
 
-<table id="tableToSolve" class="CSSTableGenerator">
+
+<table id="tableToSolve" class="CSSTableGenerator"></table>
+
+@*<table id="tableToSolve" class="CSSTableGenerator">
     @foreach (var row in Model)
     {
         <tr>
@@ -17,7 +21,15 @@
             }
         </tr>
     }
-</table>
+</table>*@
 </br>
 
 <input id="solveMatrix" type="button" value="Solve" />
+<input id="createNewMatrix" type="button" value="New Matrix" />
+
+<script>
+    $(document).ready(function () {
+        FillTable("@(Model)");
+    });
+
+</script>

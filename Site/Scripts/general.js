@@ -90,5 +90,33 @@ $(document).ready(function () {
         //console.log(matrix);
     });
 
+    $("#createNewMatrix").click(function () {
+        jQuery.ajax({
+            url: "/" + prefix + "Home/NewMatrix",
+            type: 'Get',
+            success: function (data) {
+                FillTable(data);
+            }
+        });
+    });
 
+    
 });
+
+
+
+function FillTable(data) {
+    $('#tableToSolve').empty();
+    var realData = $.parseJSON(data);
+
+    for (var i = 0; i < realData.length; i++) {
+        var newRow = $('<tr></tr>');
+        for (var j = 0; j < realData[i].length; j++) {
+
+            $('<td></td>').text(realData[i][j]).appendTo(newRow);
+        }
+        $('#tableToSolve').append(newRow);
+    }
+
+
+}

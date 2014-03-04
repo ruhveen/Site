@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Matrix";
+}
+@model int[][]
+<h2>Matrix</h2>
+
+<table id="tableToSolve" class="CSSTableGenerator">
+    @foreach (var row in Model)
+    {
+        <tr>
+            @foreach (var cell in row)
+            {
+                <td>
+                    @(cell)
+                </td>
+            }
+        </tr>
+    }
+</table>
+</br>
+
+<input id="solveMatrix" type="button" value="Solve" />

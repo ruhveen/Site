@@ -12,7 +12,8 @@
 <br />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
     <script>
-        var socket = io.connect('http://localhost:801');
+        //var socket = io.connect('http://localhost:801');
+        var socket = io.connect('http://nodejs-guyhalperin.rhcloud.com:80');
 
         socket.on('news', function (data) {
             console.log(data);

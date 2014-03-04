@@ -185,6 +185,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\IGetter.cs" />
+    <Compile Include="Helpers\MatrixCreator.cs" />
     <Compile Include="Helpers\MyCache.cs" />
     <Compile Include="Helpers\MyTextHelper.cs" />
     <Compile Include="Migrations\201402041029314_InitialCreate.cs" />
@@ -284,6 +285,7 @@
     <Content Include="Views\Home\ReadWriteCache.cshtml" />
     <Content Include="Views\Home\UnderConstruction.cshtml" />
     <Content Include="Views\Home\EmploymentHistory.cshtml" />
+    <Content Include="Views\Home\Matrix.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201402041029314_InitialCreate.resx">

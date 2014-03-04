@@ -8,6 +8,8 @@ using Microsoft.AspNet.Identity;
 using Site.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.IO;
+using Site.Helpers;
+using System.Web.Script.Serialization;
 
 namespace Site.Controllers
 {
@@ -61,7 +63,21 @@ namespace Site.Controllers
         {
             return View();
         }
-        public ActionResult Friends(bool privateFriends = true)
+        public ActionResult Matrix()
+        {
+            return View(MatrixCreator.New);
+        }
+        public string SolveMatrix()
+        {
+            var str = Request.Form["res"];
+
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            int[][] resss = js.Deserialize<int[][]>(str);
+
+
+            return js.Serialize(MatrixCreator.Solve(resss)) ;
+        }
+        public ActionResult Friends(bool privateFriends = false)
         {
             string currentUserId = User.Identity.GetUserId();
             FacebookLists lists = new FacebookLists();

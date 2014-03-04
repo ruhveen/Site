@@ -63,10 +63,10 @@ namespace Site.Controllers
         {
             return View();
         }
-        public ActionResult Matrix()
-        {
-            return View(MatrixCreator.New);
-        }
+        //public ActionResult Matrix()
+        //{
+        //    return View(MatrixCreator.New);
+        //}
         public string SolveMatrix()
         {
             var str = Request.Form["res"];

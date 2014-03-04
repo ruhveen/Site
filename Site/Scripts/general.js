@@ -75,7 +75,7 @@ $(document).ready(function () {
                     $(row).find('td').each(function (colIndex, cell) {
                         if (realData[rowIndex][colIndex] == "1")
                         {
-                            cell.style.background = "green";
+                            cell.style.background = "-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #327C00), color-stop(1, #ffffff))";
                         }
                     });
                 });

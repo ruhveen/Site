@@ -26,7 +26,8 @@ namespace Site
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/coolCSS.css"));
+                      "~/Content/coolCSS.css",
+                      "~/Content/ticTacToe.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/generalScripts").Include(
                       "~/Scripts/general.js"));

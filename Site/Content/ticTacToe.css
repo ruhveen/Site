@@ -1,0 +1,30 @@
+﻿table {
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 0.3em;
+  border: 1px solid silver;
+}
+
+.firstPlayer {
+     background: no-repeat center !important;
+    background-image: url(Images/xImg.png) !important;
+    background-size: 60% !important;
+}
+
+.secondPlayer {
+    background: no-repeat center !important;
+    background-image: url(Images/oImg.png) !important;
+    background-size: 60% !important;
+
+}
+
+.firstPlayer.colorButtons{
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #327C00), color-stop(1, #ffffff)) !important;
+}
+
+.secondPlayer.colorButtons {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffd800), color-stop(1, #ffffff)) !important;
+
+}

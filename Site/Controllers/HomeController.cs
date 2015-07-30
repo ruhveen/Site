@@ -13,6 +13,7 @@ using System.Web.Script.Serialization;
 
 namespace Site.Controllers
 {
+    //[RequireHttps]
     public class HomeController : Controller
     {
         public UserManager<ApplicationUser> UserManager { get; private set; }
@@ -100,17 +101,24 @@ namespace Site.Controllers
 
             if (currentUserId != null)
             {
-
-                var user = UserManager.FindById<ApplicationUser>(currentUserId);
+                
+                var user = UserManager.FindById<ApplicationUser,string>(currentUserId);
 
 
                 var fb = new FacebookClient(user.AccessToken);
-                dynamic myInfo = fb.Get("/me/friends");
+                
+                int counter = 0;
                 var friendsList = new List<FacebookViewModel>();
-                foreach (dynamic friend in myInfo.data)
+                while (counter < 10)
                 {
-                    friendsList.Add(new FacebookViewModel() { Name = friend.name, ImageURL = @"https://graph.facebook.com/" + friend.id + "/picture?type=small" });
-                    //Response.Write("Name: " + friend.name + "<br/>Facebook id: " + friend.id + "<br/><br/>");
+                    dynamic myInfo = fb.Get("/me/friends?limit=100&offset=" + (counter * 100).ToString());
+                    
+                    foreach (dynamic friend in myInfo.data)
+                    {
+                        friendsList.Add(new FacebookViewModel() { Name = friend.name, ImageURL = @"https://graph.facebook.com/" + friend.id + "/picture?type=small" });
+                        //Response.Write("Name: " + friend.name + "<br/>Facebook id: " + friend.id + "<br/><br/>");
+                    }
+                    counter++;
                 }
 
                 
@@ -153,6 +161,13 @@ namespace Site.Controllers
         private static List<string> GetLines(StreamReader sr)
         {
             return sr.ReadToEnd().Split('\n').Where(x => x != " ").ToList();
+        }
+        public ActionResult TicTacToe()
+        {
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            return View("~/Views/Home/TicTacToe.cshtml", "");
+            //return View("~/Views/Home/Matrix.cshtml", 4);
+
         }
     }
 }

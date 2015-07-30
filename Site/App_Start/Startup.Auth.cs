@@ -57,6 +57,8 @@ namespace Site
                 }
             };
 
+            //facebookOptions.Scope.Add("publish_stream");
+            facebookOptions.Scope.Add("user_friends");
             app.UseFacebookAuthentication(facebookOptions);
 
             //app.UseGoogleAuthentication();

@@ -207,6 +207,13 @@ namespace Site.Controllers
             var user = await UserManager.FindAsync(loginInfo.Login);
             if (user != null)
             {
+
+                ClaimsIdentity ext = loginInfo.ExternalIdentity;
+                var access_token = ext.Claims.First(x => x.Type.Contains("FacebookAccessToken")).Value;
+
+                user.AccessToken = access_token;
+                UserManager.Update(user);
+
                 await SignInAsync(user, isPersistent: false);
                 return RedirectToLocal(returnUrl);
             }
